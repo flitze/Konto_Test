@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+<div class="containder-fluid">
+    <p>Are you sure you want to delete the following transaction</p>
+    <div class="row">
+        <div class="col">
+            {{ transaction.amount }}
+        </div>
+    </div>
+</div>
+{% endblock %}

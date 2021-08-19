@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Home</h1>
+{% for transaction in transactions %}
+    <div class="card">
+            <div class="card-body">
+                <h3>{{ transaction.amount }}, {{ transaction.reason }}</h3>
+                <p>Added on {{ transaction.transaction_date }}</p>
+                <a href="{{ url_for('edit', transaction_id = transaction.id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('delete', transaction_id = transaction.id) }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+{% endfor %}
+{% endblock %}
