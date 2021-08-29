@@ -35,7 +35,7 @@ def add():
     return render_template("add.html", form=form)
 
 
-@app.route("/delete/<int:transaction_id>")
+@app.route("/delete/<int:transaction_id>", methods=["GET", "POST"])
 def delete(transaction_id):
     transaction = session.query(Transaction).get(transaction_id)
     if transaction:
@@ -43,6 +43,9 @@ def delete(transaction_id):
     return redirect(url_for("index"))
 
 
-@app.route("/edit")
-def edit():
-    return render_template("edit.html")
+@app.route("/edit/<int:transaction_id>", methods=["GET", "POST"])
+def edit(transaction_id):
+    transaction = session.query(Transaction).get(transaction_id)
+    if transaction:
+        return render_template("edit.html", transaction=transaction)
+    return redirect(url_for("index"))

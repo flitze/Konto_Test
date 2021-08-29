@@ -4,11 +4,14 @@
 
 {% block content %}
 <div class="containder-fluid">
+  <form action="{{ url_for('delete', transaction_id=transaction.id) }}" method="post">
     <p>Are you sure you want to delete the following transaction</p>
-    <div class="row">
+      <div class="row">
         <div class="col">
-            {{ transaction.amount }}
+          {{ transaction.amount }}
         </div>
     </div>
+    </form>
+
 </div>
 {% endblock %}
